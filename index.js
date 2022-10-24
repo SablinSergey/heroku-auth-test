@@ -7,8 +7,8 @@ http.createServer(function(req, res) {
     console.log('New query received:', req.url);
     console.log('Pathname:', pathname);
 
-    //res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
     if( pathname === '/get-authorization') {
         const cookie = req.headers.cookie;
