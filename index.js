@@ -2,13 +2,15 @@ const http = require('http');
 const url = require('url');
 
 http.createServer(function(req, res) {
-    const { pathname, query } = url.parse(req.url, true);
-
-    //res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const { pathname, query, protocol, host } = url.parse(req.url, true);
 
     console.log('New query received:', req.url);
+    console.log('Origin1?????:', req.headers.origin);
+    console.log('Origin2?????:', req);
     console.log('Pathname:', pathname);
+
+    //res.setHeader('Access-Control-Allow-Credentials', true);
+    //res.setHeader('Access-Control-Allow-Origin', origin);
 
     if( pathname === '/get-authorization') {
         const cookie = req.headers.cookie;
