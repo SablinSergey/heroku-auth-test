@@ -4,6 +4,9 @@ const url = require('url');
 http.createServer(function(req, res) {
     const { pathname, query } = url.parse(req.url, true);
 
+    //res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     console.log('New query received:', req.url);
     console.log('Pathname:', pathname);
 
@@ -22,9 +25,6 @@ http.createServer(function(req, res) {
             res.end(`{ "status": "failed" }`);
             return;
         }
-
-        //res.setHeader('Access-Control-Allow-Credentials', true);
-        res.setHeader('Access-Control-Allow-Origin', '*');
 
         const token = tokenCookiePair.replace('token=','');
 
