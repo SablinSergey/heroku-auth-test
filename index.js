@@ -23,6 +23,9 @@ http.createServer(function(req, res) {
             return;
         }
 
+        //res.setHeader('Access-Control-Allow-Credentials', true);
+        res.setHeader('Access-Control-Allow-Origin', '*');
+
         const token = tokenCookiePair.replace('token=','');
 
         res.end(`{ "status": "ok", "token": "${token}"}`);
